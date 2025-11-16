@@ -1,8 +1,3 @@
-/* 🌿 FloraPulse Unified Script - 2025
-   Works for login.html, contact.html, and details.html
-   Handles dark mode, validation, alerts, and background floaters.
-*/
-
 // === FLOATING BACKGROUND OBJECTS ===
 const floatZone = document.getElementById('floatZone');
 if (floatZone) {
@@ -98,12 +93,6 @@ document.querySelectorAll('form[novalidate]').forEach(form => {
     // Page-specific success feedback
     if (formName.includes('login')) {
       showAlert('Login successful! Redirecting...', 'success');
-    } else if (formName.includes('contact')) {
-      showAlert('Your message has been sent successfully!', 'success');
-      form.reset();
-    } else if (formName.includes('details')) {
-      showAlert('Your details have been saved successfully!', 'success');
-      form.reset();
     } else {
       showAlert('Form submitted successfully!', 'success');
     }
@@ -136,42 +125,3 @@ document.querySelectorAll('form[novalidate]').forEach(form => {
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
 
-// PROFILE PICTURE: click preview to open file picker, show selected image
-(function initProfilePicker() {
-  const picInput = document.getElementById('profilePicInput');
-  const picPreview = document.getElementById('profilePicPreview');
-
-  if (!picInput || !picPreview) return;
-
-  // clicking the preview opens file picker
-  picPreview.addEventListener('click', () => picInput.click());
-
-  // when user selects a file, show preview
-  picInput.addEventListener('change', () => {
-    const file = picInput.files && picInput.files[0];
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      // invalid file type
-      picInput.classList.add('is-invalid');
-      picPreview.classList.add('invalid');
-      showAlert('Please select an image file for the profile picture.', 'danger');
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      picPreview.src = ev.target.result;
-      picPreview.classList.add('has-image');
-      picInput.classList.remove('is-invalid');
-      picPreview.classList.remove('invalid');
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // optional: remove invalid state when user focuses the picker (via change above or keyboard)
-  picInput.addEventListener('focus', () => {
-    picInput.classList.remove('is-invalid');
-    picPreview.classList.remove('invalid');
-  });
-})();
