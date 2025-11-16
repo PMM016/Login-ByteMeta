@@ -1,0 +1,368 @@
+* {
+    box-sizing: border-box;
+    transition: .3s
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    color: #222;
+    font-family: "Nunito", sans-serif;
+}
+
+body.dark {
+    color: #fff;
+}
+
+.login-container {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    height: 100vh !important;
+    min-width: 590px
+}
+
+body.dark .login-container {
+    color: #ddd;
+}
+
+.form-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 4rem;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background: cream;
+    transition: background 0.3s ease;
+}
+
+.form-section.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.form-section h2 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #0d6efd;
+}
+
+form {overflow-y:scroll;height: 100% !important;}
+body.dark .form-section h2 {
+    color: #66b2ff;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: .8rem 1rem;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: inherit;
+}
+
+body.dark .form-control {
+    border: 1px solid #333;
+    color: #fff;
+}
+
+body.dark .form-control:focus {
+    background: transparent;
+}
+
+.btn-login {
+    border-radius: 10px;
+    padding: .75rem;
+    background: var(--green);
+    border: none;
+    color: white;
+    transition: .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+}
+
+.btn-login:hover {
+    background-color: var(--dark-green) !important;
+    color: #fff;
+}
+
+.btn-login:hover i {
+    transform: translateX(6px);
+}
+
+.btn-login i {
+    transition: .3s;
+}
+
+.toggle-theme {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #666;
+    z-index: 5;
+}
+
+body.dark .toggle-theme {
+    color: #ddd;
+}
+
+.right-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body.dark .right-panel {
+    background: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.float-obj {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: float 12s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, -40px) scale(1.4);
+    }
+}
+
+.link-btn {
+    cursor: pointer;
+    color: #0d6efd;
+    font-weight: 500;
+}
+
+.link-btn:hover {
+    color: #083579;
+}
+
+body.dark .link-btn {
+    color: #66b2ff;
+}
+
+:root {
+    --input-border: #6c757d;
+    --input-border-focus: #495057;
+    --input-bg: #ffffff;
+    --input-color: #212529;
+}
+
+body.dark {
+    --input-border: #a0a0a0;
+    --input-border-focus: #cfcfcf;
+    --input-bg: #1e1e1e;
+    --input-color: #f8f9fa;
+}
+
+body.dark .form-section {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a1f1a 100%);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+}
+
+.form-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: "Ubuntu", sans-serif;
+}
+
+form>.mb-3 {
+    position: relative;
+}
+
+.form-control.is-invalid {
+    --bd-validate: #dc3545
+}
+
+.form-control.is-valid {
+    --bd-validate: var(--green);
+}
+
+.form-control.is-invalid,
+.form-control.is-valid {
+    background-color: var(--input-bg);
+    border-color: var(--bd-validate) !important;
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69, 0.12);
+}
+
+.form-control:not(.is-valid, .is-invalid),
+select.form-select {
+    border: 1px solid var(--input-border, var(--bs-secondary)) !important;
+    background-color: var(--input-bg, var(--bs-body-bg));
+    color: var(--input-color, var(--bs-body-color));
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus:not(.is-valid, .is-invalid),
+select.form-select:focus {
+    border-color: var(--input-border-focus, var(--bs-secondary-border-subtle)) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: var(--input-bg, var(--bs-body-bg));
+}
+
+.form-control:where(.is-valid, .is-invalid):focus {
+    box-shadow: none !important;
+    outline: none;
+}
+
+.btn-eye {
+    background-color: transparent;
+    width: 40px;
+    color: var(--input-color);
+    display: inline-block;
+    position: absolute;
+    right: 4px;
+    top: 0;
+    transform: translateY(3rem);
+    transition: all 0.3s ease;
+    opacity: 0.1;
+}
+
+.form-control:where(.is-valid, .is-invalid):focus~.btn-eye {
+    right: 1.4rem;
+}
+
+body.dark .form-control:where(.is-valid, .is-invalid):focus~.btn-eye {
+    right: 4px;
+}
+
+.form-control:focus~.btn-eye,
+.btn-eye:hover {
+    opacity: 1;
+}
+
+body.dark .form-control::placeholder {
+    color: #fff;
+    transition: 0.3s
+}
+
+/* Hide built-in password reveal icons */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-textfield-decoration-container,
+input[type="password"]::-webkit-clear-button {
+    display: none !important;
+    appearance: none;
+}
+
+.form-check {
+    cursor: pointer;
+}
+
+.form-check label {
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+:root {
+    --green2: #00c26e;
+    --dark-green: #006644;
+    --accent: #8fffd2;
+    --bg: #0a0f0d;
+    --green: #3ba76d;
+    --light-green: #a8e6cf;
+    --dark-text: #1e293b;
+}
+
+.logo {
+    z-index: 10;
+    position: absolute;
+    top: 1rem;
+    left: 4rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-img {
+    height: 35px;
+    width: 35px;
+}
+
+.flora-heading {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--green);
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 750px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        flex: 0 0 100%;
+        position: absolute;
+        margin: 1rem;
+        height: 90%;
+        width: 90%;
+        border-radius: 1rem;
+        min-width: 0
+    }
+
+    .right-panel {
+        flex: 0 0 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .form-section {
+        background: #fff5e6c5
+    }
+
+    body.dark .form-section {
+        background: #2a1f1ac5;
+    }
+
+    body.dark .input-group:focus {
+        background-color: transparent
+    }
+
+    .link-btn,
+    .form-check-label,
+    .btn {
+        font-size: 1.2rem;
+    }
+}
